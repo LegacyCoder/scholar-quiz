@@ -13,6 +13,7 @@ import android.widget.EditText;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sairaa.scholarquiz.ui.Lesson.LessonActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,6 +33,8 @@ import java.net.URLEncoder;
 public class BackgroundLoginTask extends AsyncTask<String, Void, String> {
     private final String LOGIN_URL = "http://sairaa.org/ScholarQuiz/login.php";
     private final String REGISTER_URL = "http://sairaa.org/ScholarQuiz/register_test.php";
+
+    private final String LOG_BACKGROUNDLOGINTASK = "BackgroundLoginTask";
 
     private SharedPreferenceConfig sharedPreferenceConfig;
 
@@ -120,6 +123,7 @@ public class BackgroundLoginTask extends AsyncTask<String, Void, String> {
 
                 String email =params[1];
                 String password = params[2];
+                Log.i(LOG_BACKGROUNDLOGINTASK,email);
 
                 String data = URLEncoder.encode("mail_id", "UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+
                         URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
